@@ -1,14 +1,14 @@
 CREATE DATABASE pf;
 USE pf;
 
-CREATE TABLE usuario(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50),
-    email VARCHAR(50),
-    telefone INT,
-    usuario VARCHAR(50),
-    senha VARCHAR(255),
-    tipo TINYINT 
+CREATE TABLE IF NOT EXISTS usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    usuario VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    tipo VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE servico(

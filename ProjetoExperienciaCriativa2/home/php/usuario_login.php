@@ -1,44 +1,43 @@
 <?php
 include_once('conexao.php');
 
-$retorno = [
-    'status' => '',
-    'mensagem' => '',
-    'data' => []
-];
+$retorno = ['status' => 'nok', 'mensagem' => '', 'data' => []];
 
 $usuario = $_POST['usuario'] ?? '';
 $senha = $_POST['senha'] ?? '';
 
-$stmt = $conexao->prepare("SELECT * FROM usuario WHERE usuario = ? AND senha = ?");
-$stmt->bind_param("ss", $usuario, $senha);
-$stmt->execute();
-$resultado = $stmt->get_result();
-
-$tabela = [];
-
-if ($resultado->num_rows > 0) {
-    while ($linha = $resultado->fetch_assoc()) {
-        $tabela[] = $linha;
-    }
-
-    session_start();
-    $_SESSION['usuario'] = $tabela[0];
-
-    $retorno = [
-        'status' => 'ok',
-        'mensagem' => 'Login efetuado com sucesso.',
-        'data' => $tabela
-    ];
+if (empty($usuario) || empty($senha)) {
+    $retorno['mensagem'] = 'Preencha usuário e senha.';
 } else {
-    $retorno = [
-        'status' => 'nok',
-        'mensagem' => 'Usuário ou senha inválidos.',
-        'data' => []
-    ];
+    $sql = "SELECT * FROM usuario WHERE usuario = ? AND senha = ?";
+    $stmt = $conexao->prepare($sql);
+
+    if (!$stmt) {
+        $retorno['mensagem'] = "Erro no banco de dados: " . $conexao->error;
+    } else {
+        $stmt->bind_param("ss", $usuario, $senha);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        if ($resultado->num_rows > 0) {
+            $tabela = [];
+            while ($linha = $resultado->fetch_assoc()) {
+                $tabela[] = $linha;
+            }
+
+            session_start();
+            $_SESSION['usuario'] = $tabela[0];
+
+            $retorno['status'] = 'ok';
+            $retorno['mensagem'] = 'Login efetuado com sucesso.';
+            $retorno['data'] = $tabela;
+        } else {
+            $retorno['mensagem'] = 'Usuário ou senha inválidos.';
+        }
+        $stmt->close();
+    }
 }
 
-$stmt->close();
 $conexao->close();
 
 header("Content-type:application/json;charset:utf-8");

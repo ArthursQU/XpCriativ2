@@ -22,16 +22,24 @@ async function consulta() {
             body: fd
         });
 
-        const resposta = await retorno.json();
+        const textoResposta = await retorno.text();
 
-        if (resposta.status === "ok") {
-            alert("Login efetuado com sucesso!");
-            window.location.href = "../html/index.html";
-        } else {
-            alert("Usuário ou senha inválidos.");
+        try {
+            const resposta = JSON.parse(textoResposta);
+
+            if (resposta.status === "ok") {
+                alert("Login efetuado com sucesso!");
+                window.location.href = "../html/index.html"; 
+            } else {
+                alert("Atenção: " + resposta.mensagem);
+            }
+        } catch (erroJson) {
+            console.error("Erro do Servidor:", textoResposta);
+            alert("Erro no Servidor PHP:\n\n" + textoResposta);
         }
+
     } catch (erro) {
         console.error(erro);
-        alert("Erro ao conectar com o servidor.");
+        alert("Erro de conexão (O servidor está desligado ou o caminho está errado).");
     }
 }

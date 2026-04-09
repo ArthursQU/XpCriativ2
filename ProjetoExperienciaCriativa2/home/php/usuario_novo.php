@@ -1,11 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 include_once('conexao.php');
 
-$retorno = [
-    'status' => '',
-    'mensagem' => '',
-    'data' => []
-];
+$retorno = ['status' => 'nok', 'mensagem' => '', 'data' => []];
 
 $nome = $_POST['nome'] ?? '';
 $email = $_POST['email'] ?? '';
@@ -14,32 +13,30 @@ $usuario = $_POST['usuario'] ?? '';
 $senha = $_POST['senha'] ?? '';
 $tipo = $_POST['tipo'] ?? 'contratante';
 
-if ($nome == '' || $email == '' || $telefone == '' || $usuario == '' || $senha == '') {
-    $retorno = [
-        'status' => 'nok',
-        'mensagem' => 'Preencha todos os campos.',
-        'data' => []
-    ];
+if (empty($nome) || empty($email) || empty($telefone) || empty($usuario) || empty($senha)) {
+    $retorno['mensagem'] = 'Preencha todos os campos obrigatórios.';
 } else {
-    $stmt = $conexao->prepare("INSERT INTO usuario (nome, email, telefone, usuario, senha, tipo) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $nome, $email, $telefone, $usuario, $senha, $tipo);
-    $stmt->execute();
+    $sql = "INSERT INTO usuario (nome, email, telefone, usuario, senha, tipo) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $conexao->prepare($sql);
 
-    if ($stmt->affected_rows > 0) {
-        $retorno = [
-            'status' => 'ok',
-            'mensagem' => 'Usuário cadastrado com sucesso.',
-            'data' => []
-        ];
+    // Se o prepare falhar, nós capturamos o erro do MySQL aqui!
+    if (!$stmt) {
+        $retorno['mensagem'] = "Erro na estrutura do banco: " . $conexao->error;
     } else {
-        $retorno = [
-            'status' => 'nok',
-            'mensagem' => 'Não foi possível cadastrar o usuário.',
-            'data' => []
-        ];
+        $stmt->bind_param("ssssss", $nome, $email, $telefone, $usuario, $senha, $tipo);
+        
+        if ($stmt->execute()) {
+            if ($stmt->affected_rows > 0) {
+                $retorno['status'] = 'ok';
+                $retorno['mensagem'] = 'Usuário cadastrado com sucesso.';
+            } else {
+                $retorno['mensagem'] = 'Não foi possível cadastrar o usuário.';
+            }
+        } else {
+            $retorno['mensagem'] = "Erro ao executar inserção: " . $stmt->error;
+        }
+        $stmt->close();
     }
-
-    $stmt->close();
 }
 
 $conexao->close();

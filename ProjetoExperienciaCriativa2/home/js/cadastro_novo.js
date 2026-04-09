@@ -30,16 +30,24 @@ async function novo() {
             body: fd
         });
 
-        const resposta = await retorno.json();
+        const textoResposta = await retorno.text();
 
-        if (resposta.status === "ok") {
-            alert("Cadastro realizado com sucesso!");
-            window.location.href = "../html/login.html";
-        } else {
-            alert("Erro: " + resposta.mensagem);
+        try {
+            const resposta = JSON.parse(textoResposta);
+
+            if (resposta.status === "ok") {
+                alert("Cadastro realizado com sucesso!");
+                window.location.href = "../html/login.html";
+            } else {
+                alert("Aviso: " + resposta.mensagem);
+            }
+        } catch (erroJson) {
+            console.error("Erro do Servidor:", textoResposta);
+            alert("Erro no Servidor PHP:\n\n" + textoResposta);
         }
+        
     } catch (erro) {
         console.error(erro);
-        alert("Erro ao conectar com o servidor.");
+        alert("Erro de conexão (O servidor está desligado ou o caminho está errado).");
     }
 }
