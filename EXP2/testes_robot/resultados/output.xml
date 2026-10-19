@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.12.10 on win32)" generated="2026-10-19T11:13:13.757715" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\xampp\htdocs\EXP2\testes_robot\tests">
+<suite id="s1-s1" name="Consertaja" source="C:\xampp\htdocs\EXP2\testes_robot\tests\consertaja.robot">
+<kw name="Iniciar Navegador" owner="keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:14.112959" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--headless=new"); add_argument("--window-size=1440,1080"); add_argument("--disable-gpu")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.112959" elapsed="0.529202"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>0 seconds</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.642161" elapsed="0.000588"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0 seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.642749" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:14.112622" elapsed="0.530127"/>
+</kw>
+<test id="s1-s1-t1" name="TC-017 - Login com senha invalida" line="22">
+<kw name="Limpar Estado De Autenticacao" owner="keywords" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:14.643751" level="INFO">Opening url 'http://localhost/EXP2/home/php/usuario_logoff.php'</msg>
+<arg>${LOGOUT_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.643751" elapsed="0.027822"/>
+</kw>
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.671573" elapsed="0.007754"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:14.679327" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.679327" elapsed="0.137783"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:14.643751" elapsed="0.173359"/>
+</kw>
+<kw name="Credenciais De Teste Devem Estar Configuradas" owner="keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-19T11:13:14.818805" level="INFO">Length is 15.</msg>
+<arg>${TEST_USERNAME}</arg>
+<arg>Defina TEST_USERNAME com uma conta exclusiva para testes.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.818805" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-19T11:13:14.818805" level="INFO">Length is 15.</msg>
+<arg>${TEST_PASSWORD}</arg>
+<arg>Defina TEST_PASSWORD com a senha da conta exclusiva para testes.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.818805" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:14.818805" elapsed="0.000000"/>
+</kw>
+<kw name="Acessar Tela De Login" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:14.820404" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.820404" elapsed="0.019089"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=usuario</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.839493" elapsed="0.015194"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=senha</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.854687" elapsed="0.009452"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:14.818805" elapsed="0.045334"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:14.864139" level="INFO">Typing text 'robot_teste_ra2' into text field 'id=usuario'.</msg>
+<arg>id=usuario</arg>
+<arg>${TEST_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.864139" elapsed="0.046080"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:14.911767" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-10-19T11:13:14.925766" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=senha</arg>
+<arg>${INVALID_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.910219" elapsed="0.039424"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:14.949643" level="INFO">Clicking button 'id=enviar'.</msg>
+<arg>id=enviar</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.949643" elapsed="0.041524"/>
+</kw>
+<kw name="Alert Should Be Present" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:14.991167" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>Atenção: Usuário ou senha inválidos.</arg>
+<doc>Verifies that an alert is present and by default, accepts it.</doc>
+<status status="PASS" start="2026-10-19T11:13:14.991167" elapsed="0.505843"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:15.501243" level="INFO">Current location contains '/home/html/login.html'.</msg>
+<arg>/home/html/login.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.497010" elapsed="0.004233"/>
+</kw>
+<doc>Planilha: Login, linha 18, ID 17. Particao de equivalencia negativa para senha.</doc>
+<tag>alta</tag>
+<tag>funcional</tag>
+<tag>login</tag>
+<tag>negativo</tag>
+<status status="PASS" start="2026-10-19T11:13:14.642749" elapsed="0.858494"/>
+</test>
+<test id="s1-s1-t2" name="TC-018 - Login com usuario invalido" line="33">
+<kw name="Limpar Estado De Autenticacao" owner="keywords" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:15.501243" level="INFO">Opening url 'http://localhost/EXP2/home/php/usuario_logoff.php'</msg>
+<arg>${LOGOUT_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.501243" elapsed="0.018695"/>
+</kw>
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.519938" elapsed="0.004547"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:15.524485" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.524485" elapsed="0.016665"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:15.501243" elapsed="0.039907"/>
+</kw>
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2026-10-19T11:13:15.542585" level="INFO">${instante} = 1792419195</msg>
+<var>${instante}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.541150" elapsed="0.001435"/>
+</kw>
+<kw name="Acessar Tela De Login" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:15.543588" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.542585" elapsed="0.016954"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=usuario</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.559539" elapsed="0.010742"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=senha</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.570281" elapsed="0.007109"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:15.542585" elapsed="0.034805"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:15.577390" level="INFO">Typing text 'robot_usuario_inexistente_1792419195' into text field 'id=usuario'.</msg>
+<arg>id=usuario</arg>
+<arg>robot_usuario_inexistente_${instante}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.577390" elapsed="0.042604"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:15.619994" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-10-19T11:13:15.634877" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=senha</arg>
+<arg>${INVALID_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.619994" elapsed="0.046051"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:15.667060" level="INFO">Clicking button 'id=enviar'.</msg>
+<arg>id=enviar</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.666045" elapsed="0.046840"/>
+</kw>
+<kw name="Alert Should Be Present" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:15.713914" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>Atenção: Usuário ou senha inválidos.</arg>
+<doc>Verifies that an alert is present and by default, accepts it.</doc>
+<status status="PASS" start="2026-10-19T11:13:15.713914" elapsed="0.504083"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.220930" level="INFO">Current location contains '/home/html/login.html'.</msg>
+<arg>/home/html/login.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.217997" elapsed="0.002933"/>
+</kw>
+<doc>Planilha: Login, linha 19, ID 18. Particao de equivalencia negativa para usuario.</doc>
+<tag>alta</tag>
+<tag>funcional</tag>
+<tag>independente</tag>
+<tag>login</tag>
+<tag>negativo</tag>
+<status status="PASS" start="2026-10-19T11:13:15.501243" elapsed="0.721273"/>
+</test>
+<test id="s1-s1-t3" name="TC-024 - Menu Servicos direciona para oferecendo" line="44">
+<kw name="Limpar Estado De Autenticacao" owner="keywords" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.222516" level="INFO">Opening url 'http://localhost/EXP2/home/php/usuario_logoff.php'</msg>
+<arg>${LOGOUT_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.222516" elapsed="0.018378"/>
+</kw>
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.240894" elapsed="0.006201"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.247095" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.247095" elapsed="0.019332"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:16.222516" elapsed="0.043911"/>
+</kw>
+<kw name="Autenticar Com Usuario De Teste" owner="keywords">
+<kw name="Credenciais De Teste Devem Estar Configuradas" owner="keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-19T11:13:16.266427" level="INFO">Length is 15.</msg>
+<arg>${TEST_USERNAME}</arg>
+<arg>Defina TEST_USERNAME com uma conta exclusiva para testes.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.266427" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-19T11:13:16.267981" level="INFO">Length is 15.</msg>
+<arg>${TEST_PASSWORD}</arg>
+<arg>Defina TEST_PASSWORD com a senha da conta exclusiva para testes.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.266427" elapsed="0.001554"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:16.266427" elapsed="0.001554"/>
+</kw>
+<kw name="Acessar Tela De Login" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.267981" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.267981" elapsed="0.017375"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=usuario</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.286955" elapsed="0.009212"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=senha</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.296167" elapsed="0.005726"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:16.267981" elapsed="0.033912"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.301893" level="INFO">Typing text 'robot_teste_ra2' into text field 'id=usuario'.</msg>
+<arg>id=usuario</arg>
+<arg>${TEST_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.301893" elapsed="0.037886"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.339779" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-10-19T11:13:16.354790" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=senha</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.339779" elapsed="0.039874"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.379653" level="INFO">Clicking button 'id=enviar'.</msg>
+<arg>id=enviar</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.379653" elapsed="0.032061"/>
+</kw>
+<kw name="Alert Should Be Present" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.412979" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>Login efetuado com sucesso!</arg>
+<doc>Verifies that an alert is present and by default, accepts it.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.411714" elapsed="0.504403"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.980872" level="INFO">Current location contains '/home/html/index.html'.</msg>
+<arg>/home/html/index.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.918045" elapsed="0.062827"/>
+</kw>
+<arg>10x</arg>
+<arg>500 milliseconds</arg>
+<arg>Location Should Contain</arg>
+<arg>/home/html/index.html</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.917704" elapsed="0.064168"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:16.266427" elapsed="0.715445"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:16.981872" level="INFO">Clicking element 'css=button[data-bs-toggle="dropdown"]'.</msg>
+<arg>css=button[data-bs-toggle="dropdown"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:16.981872" elapsed="0.033231"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=.dropdown-menu.show a[href*="prestadores/html/prestador.html"]</arg>
+<arg>5 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.015103" elapsed="0.008844"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.024955" level="INFO">Clicking element 'css=.dropdown-menu.show a[href*="prestadores/html/prestador.html"]'.</msg>
+<arg>css=.dropdown-menu.show a[href*="prestadores/html/prestador.html"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.023947" elapsed="0.076792"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.113200" level="INFO">Current location contains '/servicos/prestadores/html/prestador.html'.</msg>
+<arg>/servicos/prestadores/html/prestador.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.101742" elapsed="0.011458"/>
+</kw>
+<arg>10x</arg>
+<arg>500 milliseconds</arg>
+<arg>Location Should Contain</arg>
+<arg>/servicos/prestadores/html/prestador.html</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.100739" elapsed="0.012461"/>
+</kw>
+<doc>Planilha: Pagina inicial, linha 25, ID 24. Fluxo principal autenticado.</doc>
+<tag>alta</tag>
+<tag>autenticado</tag>
+<tag>funcional</tag>
+<tag>navegacao</tag>
+<status status="PASS" start="2026-10-19T11:13:16.222516" elapsed="0.890684"/>
+</test>
+<test id="s1-s1-t4" name="TC-042 - Pagina restrita redireciona usuario sem sessao" line="53">
+<kw name="Limpar Estado De Autenticacao" owner="keywords" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.114254" level="INFO">Opening url 'http://localhost/EXP2/home/php/usuario_logoff.php'</msg>
+<arg>${LOGOUT_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.114254" elapsed="0.036413"/>
+</kw>
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.151676" elapsed="0.006230"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.158906" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.157906" elapsed="0.022996"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:17.114254" elapsed="0.067656"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.181910" level="INFO">Opening url 'http://localhost/EXP2/home/html/perfil.html'</msg>
+<arg>${PROFILE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.181910" elapsed="0.048552"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.235093" level="INFO">Current location contains '/home/html/login.html'.</msg>
+<arg>/home/html/login.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.232039" elapsed="0.003054"/>
+</kw>
+<arg>10x</arg>
+<arg>500 milliseconds</arg>
+<arg>Location Should Contain</arg>
+<arg>/home/html/login.html</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.230462" elapsed="0.004631"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.239817" level="INFO">Current page contains element 'id=usuario'.</msg>
+<arg>id=usuario</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.235093" elapsed="0.004724"/>
+</kw>
+<doc>Planilha: Seguranca Global, linha 43, ID 42. Teste negativo de controle de acesso.</doc>
+<tag>alta</tag>
+<tag>independente</tag>
+<tag>negativo</tag>
+<tag>seguranca</tag>
+<tag>sessao</tag>
+<status status="PASS" start="2026-10-19T11:13:17.114254" elapsed="0.125563"/>
+</test>
+<test id="s1-s1-t5" name="TC-047 - Encerrar sessao pelo botao Sair" line="60">
+<kw name="Limpar Estado De Autenticacao" owner="keywords" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.240862" level="INFO">Opening url 'http://localhost/EXP2/home/php/usuario_logoff.php'</msg>
+<arg>${LOGOUT_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.240862" elapsed="0.021537"/>
+</kw>
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.262902" elapsed="0.005125"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.268027" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.268027" elapsed="0.023003"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:17.240862" elapsed="0.050168"/>
+</kw>
+<kw name="Autenticar Com Usuario De Teste" owner="keywords">
+<kw name="Credenciais De Teste Devem Estar Configuradas" owner="keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-19T11:13:17.293174" level="INFO">Length is 15.</msg>
+<arg>${TEST_USERNAME}</arg>
+<arg>Defina TEST_USERNAME com uma conta exclusiva para testes.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.291532" elapsed="0.001642"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-19T11:13:17.293174" level="INFO">Length is 15.</msg>
+<arg>${TEST_PASSWORD}</arg>
+<arg>Defina TEST_PASSWORD com a senha da conta exclusiva para testes.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.293174" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:17.291532" elapsed="0.001642"/>
+</kw>
+<kw name="Acessar Tela De Login" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.293174" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.293174" elapsed="0.020950"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=usuario</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.314124" elapsed="0.007635"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=senha</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.321759" elapsed="0.008206"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:17.293174" elapsed="0.036791"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.329965" level="INFO">Typing text 'robot_teste_ra2' into text field 'id=usuario'.</msg>
+<arg>id=usuario</arg>
+<arg>${TEST_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.329965" elapsed="0.042319"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.372284" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-10-19T11:13:17.387349" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=senha</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.372284" elapsed="0.039602"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.411886" level="INFO">Clicking button 'id=enviar'.</msg>
+<arg>id=enviar</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.411886" elapsed="0.033855"/>
+</kw>
+<kw name="Alert Should Be Present" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.445741" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>Login efetuado com sucesso!</arg>
+<doc>Verifies that an alert is present and by default, accepts it.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.445741" elapsed="0.503598"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.976868" level="INFO">Current location contains '/home/html/index.html'.</msg>
+<arg>/home/html/index.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.950879" elapsed="0.025989"/>
+</kw>
+<arg>10x</arg>
+<arg>500 milliseconds</arg>
+<arg>Location Should Contain</arg>
+<arg>/home/html/index.html</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.949339" elapsed="0.027529"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:17.291532" elapsed="0.685336"/>
+</kw>
+<kw name="Sair Da Aplicacao" owner="keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:17.978427" level="INFO">Clicking button 'id=logoff'.</msg>
+<arg>id=logoff</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:17.978427" elapsed="0.039318"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.042412" level="INFO">Current location contains '/home/html/login.html'.</msg>
+<arg>/home/html/login.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.017745" elapsed="0.024667"/>
+</kw>
+<arg>10x</arg>
+<arg>500 milliseconds</arg>
+<arg>Location Should Contain</arg>
+<arg>/home/html/login.html</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.017745" elapsed="0.024667"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:17.976868" elapsed="0.065544"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.050160" level="INFO">Current page contains element 'id=enviar'.</msg>
+<arg>id=enviar</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.042412" elapsed="0.007748"/>
+</kw>
+<doc>Planilha: Sessao, linha 48, ID 47. Verifica invalidacao da sessao pelo fluxo de interface.</doc>
+<tag>alta</tag>
+<tag>autenticado</tag>
+<tag>funcional</tag>
+<tag>sessao</tag>
+<status status="PASS" start="2026-10-19T11:13:17.240862" elapsed="0.809298"/>
+</test>
+<test id="s1-s1-t6" name="TC-048 - Acesso bloqueado apos encerrar sessao" line="67">
+<kw name="Limpar Estado De Autenticacao" owner="keywords" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.052317" level="INFO">Opening url 'http://localhost/EXP2/home/php/usuario_logoff.php'</msg>
+<arg>${LOGOUT_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.051181" elapsed="0.020768"/>
+</kw>
+<kw name="Delete All Cookies" owner="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.073535" elapsed="0.004466"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.078001" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.078001" elapsed="0.020989"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:18.051181" elapsed="0.047809"/>
+</kw>
+<kw name="Autenticar Com Usuario De Teste" owner="keywords">
+<kw name="Credenciais De Teste Devem Estar Configuradas" owner="keywords">
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-19T11:13:18.099994" level="INFO">Length is 15.</msg>
+<arg>${TEST_USERNAME}</arg>
+<arg>Defina TEST_USERNAME com uma conta exclusiva para testes.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.099994" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-19T11:13:18.101584" level="INFO">Length is 15.</msg>
+<arg>${TEST_PASSWORD}</arg>
+<arg>Defina TEST_PASSWORD com a senha da conta exclusiva para testes.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.099994" elapsed="0.001590"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:18.099994" elapsed="0.001590"/>
+</kw>
+<kw name="Acessar Tela De Login" owner="keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.101915" level="INFO">Opening url 'http://localhost/EXP2/home/html/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.101915" elapsed="0.018404"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=usuario</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.120319" elapsed="0.007509"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=senha</arg>
+<arg>10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.127828" elapsed="0.006057"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:18.101915" elapsed="0.031970"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.133885" level="INFO">Typing text 'robot_teste_ra2' into text field 'id=usuario'.</msg>
+<arg>id=usuario</arg>
+<arg>${TEST_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.133885" elapsed="0.039423"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.173308" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-10-19T11:13:18.187883" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=senha</arg>
+<arg>${TEST_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.173308" elapsed="0.038098"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.213102" level="INFO">Clicking button 'id=enviar'.</msg>
+<arg>id=enviar</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.213102" elapsed="0.044736"/>
+</kw>
+<kw name="Alert Should Be Present" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.259352" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>Login efetuado com sucesso!</arg>
+<doc>Verifies that an alert is present and by default, accepts it.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.258849" elapsed="0.503829"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.786547" level="INFO">Current location contains '/home/html/index.html'.</msg>
+<arg>/home/html/index.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.762678" elapsed="0.023869"/>
+</kw>
+<arg>10x</arg>
+<arg>500 milliseconds</arg>
+<arg>Location Should Contain</arg>
+<arg>/home/html/index.html</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.762678" elapsed="0.023869"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:18.099994" elapsed="0.686553"/>
+</kw>
+<kw name="Sair Da Aplicacao" owner="keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.786547" level="INFO">Clicking button 'id=logoff'.</msg>
+<arg>id=logoff</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.786547" elapsed="0.033281"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.842105" level="INFO">Current location contains '/home/html/login.html'.</msg>
+<arg>/home/html/login.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.821383" elapsed="0.020722"/>
+</kw>
+<arg>10x</arg>
+<arg>500 milliseconds</arg>
+<arg>Location Should Contain</arg>
+<arg>/home/html/login.html</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.819828" elapsed="0.022277"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:18.786547" elapsed="0.055558"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.842105" level="INFO">Opening url 'http://localhost/EXP2/home/html/perfil.html'</msg>
+<arg>${PROFILE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.842105" elapsed="0.029359"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.887701" level="INFO">Current location contains '/home/html/login.html'.</msg>
+<arg>/home/html/login.html</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.871968" elapsed="0.015733"/>
+</kw>
+<arg>10x</arg>
+<arg>500 milliseconds</arg>
+<arg>Location Should Contain</arg>
+<arg>/home/html/login.html</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.871464" elapsed="0.016237"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-10-19T11:13:18.890880" level="INFO">Current page contains element 'id=usuario'.</msg>
+<arg>id=usuario</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.887701" elapsed="0.003179"/>
+</kw>
+<doc>Planilha: Sessao, linha 49, ID 48. Reutiliza o estado apos logoff para verificar autorizacao.</doc>
+<tag>alta</tag>
+<tag>autenticado</tag>
+<tag>seguranca</tag>
+<tag>sessao</tag>
+<status status="PASS" start="2026-10-19T11:13:18.051181" elapsed="0.839699"/>
+</test>
+<kw name="Encerrar Navegador" owner="keywords" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-10-19T11:13:18.892523" elapsed="2.110956"/>
+</kw>
+<status status="PASS" start="2026-10-19T11:13:18.890880" elapsed="2.112599"/>
+</kw>
+<doc>Regressao funcional dos casos selecionados da planilha do RA2.</doc>
+<status status="PASS" start="2026-10-19T11:13:13.802394" elapsed="7.201590"/>
+</suite>
+<status status="PASS" start="2026-10-19T11:13:13.759232" elapsed="7.244752"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="6" fail="0" skip="0">alta</stat>
+<stat pass="3" fail="0" skip="0">autenticado</stat>
+<stat pass="4" fail="0" skip="0">funcional</stat>
+<stat pass="2" fail="0" skip="0">independente</stat>
+<stat pass="2" fail="0" skip="0">login</stat>
+<stat pass="1" fail="0" skip="0">navegacao</stat>
+<stat pass="3" fail="0" skip="0">negativo</stat>
+<stat pass="2" fail="0" skip="0">seguranca</stat>
+<stat pass="3" fail="0" skip="0">sessao</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="6" fail="0" skip="0">Tests</stat>
+<stat name="Consertaja" id="s1-s1" pass="6" fail="0" skip="0">Tests.Consertaja</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
